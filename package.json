@@ -6,11 +6,22 @@
   "workspaces": [
     "client",
     "server",
-    "database"
+    "postgresql",
+    "redis"
   ],
   "scripts": {
+    "client:dev": "npm run dev --workspace=client",
+    "server:dev": "wait-on tcp:5432 && wait-on tcp:6379 && npm run start:dev --workspace=server",
+    "server:test": "npm run test --workspace=server",
+    "postgres:start": "npm run start --workspace=postgresql",
+    "redis:start": "npm run start --workspace=redis",
+    "start": "concurrently 'npm run postgres:start' 'npm run redis:start' 'npm run server:dev' 'npm run client:dev'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "wait-on": "^7.0.1"
+  }
 }
