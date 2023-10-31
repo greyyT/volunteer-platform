@@ -71,6 +71,7 @@ model Event {
   name                  String
   slug                  String          @unique
   isPinned              Boolean         @default(false)
+  isVerified            Boolean         @default(false)
   platform              String
   startDate             DateTime
   endDate               DateTime
