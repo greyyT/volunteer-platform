@@ -1,9 +1,9 @@
-export type Organization = {
+import { Request } from 'express';
+
+type AuthPayload = {
   id: string;
-  name: string;
   email: string;
-  createdAt: Date;
-  updatedAt: Date;
-  portrait: string;
-  isVerified: boolean;
+  isOrganization: boolean;
 };
+
+export type RequestWithAuth = Request & AuthPayload;

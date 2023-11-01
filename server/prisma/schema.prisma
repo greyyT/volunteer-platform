@@ -11,17 +11,21 @@ datasource db {
 }
 
 model Organization {
-  id            String               @id @default(cuid())
-  name          String
-  email         String               @unique
-  password      String
-  createdAt     DateTime             @default(now())
-  updatedAt     DateTime             @updatedAt
-  portrait      String?
-  isVerified    Boolean              @default(false)
-  verifications OrganizationVerification[]
-  member        UserOrganization[]
-  events        Event[]
+  id                  String                      @id @default(cuid())
+  username            String                      @unique
+  name                String?
+  email               String                      @unique
+  salt                String
+  password            String        
+  phone               String                      @unique
+  location            String?
+  createdAt           DateTime                    @default(now())
+  updatedAt           DateTime                    @updatedAt
+  portrait            String?       
+  isVerified          Boolean                     @default(false)
+  verifications       OrganizationVerification[]
+  member              UserOrganization[]
+  events              Event[]
 }
 
 model OrganizationVerification {
@@ -33,10 +37,11 @@ model OrganizationVerification {
 
 model User {
   id              String                @id @default(cuid())
-  name            String
+  name            String?
   username        String                @unique
   email           String                @unique
-  phone           String?               @unique
+  phone           String                @unique
+  salt            String
   password        String
   creditPoints    Int                   @default(0)
   createdAt       DateTime              @default(now())
