@@ -16,6 +16,7 @@
     "postgres:start": "npm run start --workspace=postgresql",
     "redis:start": "npm run start --workspace=redis",
     "start": "concurrently 'npm run postgres:start' 'npm run redis:start' 'npm run server:dev' 'npm run client:dev'",
+    "stop": "npm run stop --workspace=postgresql && npm run stop --workspace=redis",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

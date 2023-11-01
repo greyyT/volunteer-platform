@@ -5,7 +5,7 @@ services:
     container_name: redis
     hostname: redis
     restart: always
-    image: votingapp_redis:latest
+    image: volunteer_platform_redis:latest
     build:
       context: .
       dockerfile: Dockerfile

@@ -1,14 +1,25 @@
-import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  Req,
+  UseInterceptors,
+} from '@nestjs/common';
 import { OrganizationService } from './organization.service';
 import { Prisma } from '@prisma/client';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('organization')
 export class OrganizationController {
   constructor(private readonly organizationService: OrganizationService) {}
 
   @Post()
-  async create(@Body() createOrganizationDto: Prisma.OrganizationCreateInput) {
-    return await this.organizationService.create(createOrganizationDto);
+  @UseInterceptors(FileInterceptor('file'))
+  async create(@Req() req: Request) {
+    console.log(req);
   }
 
   @Get()
