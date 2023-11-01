@@ -58,4 +58,18 @@ export class AuthController {
       statusCode: 200,
     };
   }
+
+  @Post('sign-out')
+  async signOut(@Res() res: Response) {
+    this.logger.debug(`Clearing access token from cookie`);
+
+    res.clearCookie('vta_access_token');
+
+    this.logger.log(`Cleared access token from cookie successfully`);
+
+    return res.status(200).json({
+      message: `Sign out successfully`,
+      statusCode: 200,
+    });
+  }
 }

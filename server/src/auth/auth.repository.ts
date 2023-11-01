@@ -103,7 +103,6 @@ export class AuthRepository {
         await this.databaseService.organization.create({
           data: {
             ...createOrganizationDto,
-            salt,
             password: await this.hashPassword(
               createOrganizationDto.password,
               salt,
@@ -160,7 +159,6 @@ export class AuthRepository {
       const createdUser = await this.databaseService.user.create({
         data: {
           ...createUserDto,
-          salt,
           password: await this.hashPassword(createUserDto.password, salt),
         },
       });

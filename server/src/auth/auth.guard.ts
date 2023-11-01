@@ -18,11 +18,12 @@ export class ControllerAuthGuard implements CanActivate {
     const request: RequestWithAuth = context.switchToHttp().getRequest();
 
     this.logger.debug(`Checking for authorization header`);
-
     const accessToken = request.cookies['vta_access_token'];
 
     try {
       const payload = this.jwtService.verify(accessToken);
+
+      this.logger.log(`Access token verified`);
 
       request.email = payload.email;
       request.isOrganization = payload.isOrganization;

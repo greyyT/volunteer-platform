@@ -9,6 +9,6 @@ import { jwtModule } from 'src/modules.config';
   imports: [ConfigModule, jwtModule],
   controllers: [AuthController],
   providers: [AuthService, AuthRepository],
-  exports: [],
+  exports: [jwtModule],
 })
 export class AuthModule {}
