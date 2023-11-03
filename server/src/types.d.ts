@@ -7,3 +7,15 @@ type AuthPayload = {
 };
 
 export type RequestWithAuth = Request & AuthPayload;
+
+type AccountInfo = {
+  id: string;
+  name: string;
+  username: string;
+  email: string;
+  phone: string;
+  location: string;
+  portrait: string;
+  isVerified: boolean;
+  isOrganization: boolean;
+};

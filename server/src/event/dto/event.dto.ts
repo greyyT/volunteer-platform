@@ -82,10 +82,4 @@ export class CreateEventDto {
   @ValidateNested({ each: true })
   @ArrayMinSize(1)
   contacts: ContactDto[];
-
-  @IsOptional()
-  photos: string[];
-
-  @IsOptional()
-  verifications: string[];
 }

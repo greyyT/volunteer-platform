@@ -2,10 +2,12 @@ import { Module } from '@nestjs/common';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
-import { CacheInterceptor, CacheModule } from '@nestjs/cache-manager';
-import { APP_INTERCEPTOR } from '@nestjs/core';
+import { CacheModule } from '@nestjs/cache-manager';
 import * as redisStore from 'cache-manager-redis-store';
 import { EventModule } from './event/event.module';
+import { AccountModule } from './account/account.module';
+import { OrganizationModule } from './organization/organization.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -20,13 +22,10 @@ import { EventModule } from './event/event.module';
     DatabaseModule,
     AuthModule,
     EventModule,
+    AccountModule,
+    OrganizationModule,
+    UserModule,
   ],
   controllers: [],
-  providers: [
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: CacheInterceptor,
-    },
-  ],
 })
 export class AppModule {}

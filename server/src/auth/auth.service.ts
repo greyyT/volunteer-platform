@@ -26,7 +26,7 @@ export class AuthService {
 
     const signedString = this.jwtService.sign(
       {
-        isOrganization: account.hasOwnProperty('isVerified'),
+        isOrganization: account.isOrganization,
         email: account.email,
       },
       {
