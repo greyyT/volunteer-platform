@@ -16,3 +16,9 @@ CACHE_TTL=3600
 JWT_SECRET=your-secret-key
 JWT_EXPIRATION_TIME=259200
 ```
+
+Run project by
+
+```bash
+npm run start
+```
